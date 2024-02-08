@@ -1,7 +1,7 @@
 //Conexión a MongoDB
 'use strict'
 
-import mongoose, { mongo } from "mongoose"
+import mongoose, { mongo } from 'mongoose'
 
 export const connect = async()=>{
     try{

@@ -1,11 +1,12 @@
 //Configuración Express
 
 //Importaciones
-import express from "express"
-import cors from "cors"
-import helmet from "helmet"
-import morgan from "morgan"
+import express from 'express'
+import cors from 'cors'
+import helmet from 'helmet'
+import morgan from 'morgan'
 import { config } from 'dotenv'
+import userRoutes from '../src/user/user.routes.js'
 
 //Configuraciones
 const app = express() //Crear el servidor
@@ -16,12 +17,12 @@ const port = process.env.PORT || 3200
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cors())//Aceptar o denegar las solicitudes de diferentes origenes (local, remoto) /pol[iticas de acceso]
-app.use(helmet())
-app.use(morgan('dev'))
+app.use(helmet())//Aplica capa de seguridad
+app.use(morgan('dev'))//Crea logs de solicitudes al servidor hhtp 
 
-/*app.get('/hola', (req, res)=>{
-    res.send('hola mundo')
-})*/
+//Declaración de rutas
+app.use(userRoutes)
+
 
 //Levantar el servidor
 export const initServer = ()=>{
