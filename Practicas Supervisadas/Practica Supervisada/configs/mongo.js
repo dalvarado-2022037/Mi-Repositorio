@@ -1,5 +1,4 @@
-
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 export const connect = async()=>{
     try{
@@ -15,6 +14,6 @@ export const connect = async()=>{
 
         return await mongoose.connect('mongodb://127.0.0.1:27017/PracticaSupervisada2')
     }catch(err){
-        console.error("Database connection failed ", err)
+        console.error('Database connection failed', err)
     }
 }

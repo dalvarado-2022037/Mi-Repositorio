@@ -53,13 +53,11 @@ export const updateProdu = async(req, res)=>{
     try{
         let { id } = req.params
         let data = req.body
-        console.log('Linea 1')
         let updatedProduct = await Product.findOneAndUpdate(
             {_id: id},
             data,
             {new: true}
         )
-        console.log('Datos : ' + updateProdu)
         if(!updatedProduct) return res.status(401).send({message: 'The product could not be updated'})
         return res.send({message: 'Updated product', updateProdu})
     }catch(err){
