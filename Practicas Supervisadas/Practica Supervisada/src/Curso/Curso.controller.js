@@ -55,7 +55,7 @@ export const updateCurso = async(req, res)=>{
         data,
         {new: true})
         if(!updateCurso) return res.status(401).send({message: 'The course could not be updated'}) 
-        return res.send({message: 'Updated course', updateProdu})
+        return res.send({message: 'Updated course', updatedCurso})
     }catch(error){
         console.error(err)
         return res.status(404).send({message: 'Unexpected error while updating'})

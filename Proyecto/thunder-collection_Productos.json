@@ -1,0 +1,155 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Productos",
+    "dateExported": "2024-02-15T07:40:54.772Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3c59cee7-000f-4019-8bd0-684b63c99338",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "addProduct",
+            "url": "localhost:3200/addProduct",
+            "method": "POST",
+            "sortNum": 5000,
+            "created": "2024-02-15T04:22:44.275Z",
+            "modified": "2024-02-15T04:22:44.275Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Leche"
+                    },
+                    {
+                        "name": "category",
+                        "value": "liquidos"
+                    },
+                    {
+                        "name": "dueDate",
+                        "value": "16/1/2025"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Leche deslactosada"
+                    },
+                    {
+                        "name": "price",
+                        "value": "15.20"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "6c8451c4-f170-40df-ad66-f60b0f507597",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "updateProdu",
+            "url": "localhost:3200/updateProdu/65cd8cd35675fdee067f5242",
+            "method": "PUT",
+            "sortNum": 7500,
+            "created": "2024-02-15T04:30:53.411Z",
+            "modified": "2024-02-15T04:59:14.306Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Leche deslactosada"
+                    },
+                    {
+                        "name": "category",
+                        "value": "liquidos"
+                    },
+                    {
+                        "name": "dueDate",
+                        "value": "16/1/2025"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Leche deslactosada"
+                    },
+                    {
+                        "name": "price",
+                        "value": "15.15"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "38422ce9-5ea1-4090-b0ca-0178ff957865",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "deleteProdu",
+            "url": "localhost:3200/deleteProdu/65cd8cd35675fdee067f5242",
+            "method": "DELETE",
+            "sortNum": 8750,
+            "created": "2024-02-15T04:35:09.597Z",
+            "modified": "2024-02-15T05:00:55.820Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3f11b913-88f7-4a6e-a5ae-d237fcf5f172",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "viewProduct",
+            "url": "localhost:3200/viewProduct",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-15T04:22:22.544Z",
+            "modified": "2024-02-15T04:22:22.544Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Leche"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "e1a74be5-2c1e-4deb-ac2d-51e3d4bee071",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "lookForAllProducts",
+            "url": "localhost:3200/lookForAllProducts",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-15T04:22:32.971Z",
+            "modified": "2024-02-15T04:22:32.971Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "fbd6e9b0-1549-4ab1-b033-9bacd61c9c4d",
+            "colId": "89a9e236-7590-496c-8aaa-64f8279eefb3",
+            "containerId": "",
+            "name": "testProduct",
+            "url": "localhost:3200/testProduct",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-15T04:22:58.243Z",
+            "modified": "2024-02-15T04:22:58.243Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
