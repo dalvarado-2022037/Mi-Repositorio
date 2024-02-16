@@ -1,3 +1,6 @@
+'use strict'
+
+import mongoose from 'mongoose'
 import { Schema, model} from 'mongoose'
 
 export const cursoSchema = Schema({
@@ -12,12 +15,13 @@ export const cursoSchema = Schema({
         'CUARTO DIVERSIFICADO','QUINTO DIVERSIFICADO','SEXTO DIVERSIFICADO'],
         required: true
     },
-    teacher:{
+    description:{
         type: String,
         required: true
     },
-    description:{
-        type: String,
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
         required: true
     }
 })

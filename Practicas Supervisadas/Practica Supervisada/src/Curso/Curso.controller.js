@@ -1,5 +1,6 @@
 
 import Curso from './Curso.model.js'
+import User from '../User/User.model.js'
 
 export const testCuso = (req,res)=>{
     return res.send('Conecto con Cursos')
@@ -8,6 +9,8 @@ export const testCuso = (req,res)=>{
 export const addCurso = async(req, res)=>{
     try{
         let data = req.body
+        let user = await User.findOne({_id:data.user})
+        if(!user) return res.status(404).send({message: 'User invalid | id user'})
         let curso = new Curso(data)
         await curso.save()
         return res.send({message: 'Course successfully added'})
