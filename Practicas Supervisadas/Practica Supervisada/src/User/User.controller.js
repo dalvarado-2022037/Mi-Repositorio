@@ -24,9 +24,31 @@ export const teacher = async(req, res)=>{
     }
 }
 
+export const registrerAdmin = async(req, res)=>{
+    try{
+        let data = req.body
+        let { password, username} = req.user
+        if(username == 'dalvarado' && await checkPassword('12345678', password)){
+            let userName = await User.findOne({username:data.username})
+            if(userName) return res.status(406).send({message: 'Username already used'})
+            data.password = await encrypt(data.password)
+            data.role = 'TEACHER_ROLE'
+            let user = new User(data)
+            user.save()
+            return res.send({message: 'Course successfully added'})
+        }
+        return res.status(401).send({message: 'You do not have an authorization of this rank'})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error course could not be added',err})
+    }
+}
+
 export const registrer = async(req, res)=>{
     try{
         let data = req.body
+        let userName = await User.findOne({username:data.username})
+        if(userName) return res.status(406).send({message: 'Username already used'})
         data.password = await encrypt(data.password)
         data.role = 'STUDENT_ROLE'
         let user = new User(data)
@@ -62,9 +84,11 @@ export const login = async(req,res)=>{
 export const update = async(req, res)=>{
     try{
         let { id } = req.params
-        let { uid } = req.user
+        let { uid, role } = req.user
         let data = req.body
-        if(!(id==uid)) return res.status(403).send({message: 'You cannot alter this users information.'})
+        if(role == 'STUDENT_ROLE')
+            if(id!=uid) 
+                return res.status(403).send({message: 'You cannot alter this users information.'})
         let update = checkUpdate(data, id)
         if(!update) return res.status(400).send({message: 'Have sumbmitted some data that cannot be updated or missing data'})
         let updatedUser = await User.findOneAndUpdate(

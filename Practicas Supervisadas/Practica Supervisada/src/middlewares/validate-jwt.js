@@ -30,3 +30,14 @@ export const isTeacher = async(req,res,next)=>{
         return res.status(404).send({message: 'Unauthorizes role'})   
     }
 }
+
+export const isStudent = async(req,res,next)=>{
+    try {
+        let { role, username } = req.user
+        if(!role || role != 'STUDENT_ROLE') return res.status(403).send({message: `You dont have students | username ${username}`})
+        next()
+    }catch(err){
+        console.error(err)
+        return res.status(404).send({message: 'Unauthorizes role'})   
+    }
+}

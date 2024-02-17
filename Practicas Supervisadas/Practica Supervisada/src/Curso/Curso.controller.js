@@ -9,8 +9,7 @@ export const testCuso = (req,res)=>{
 export const addCurso = async(req, res)=>{
     try{
         let data = req.body
-        let {  role } = req.user
-        if(role == 'STUDENT_ROLE') return res.status(403).send({message: 'You do not have authorization to add courses'})
+        let { role } = req.user
         let curso = new Curso(data)
         await curso.save()
         return res.send({message: 'Course successfully added'})
@@ -22,9 +21,13 @@ export const addCurso = async(req, res)=>{
 
 export const lookForAllCursos = async(req, res)=>{
     try{
-        let { uid } = req.user
-        let all = await Curso.find({teacher:uid})
-        return res.send({message: all})
+        let { uid, role } = req.user
+        if(role == 'TEACHER_ROLE'){
+            let allT = await Curso.find({teacher:uid})
+            return res.send({message: allT})
+        }
+        let allE = await Curso.find({students:uid})
+        return res.send({message: allE})
     }catch(err){
         console.error(err)
         return res.status(404).send({message: 'Error when searching'})
@@ -52,52 +55,48 @@ export const updateCurso = async(req, res)=>{
 
 export const deleteCurso = async(req,res)=>{
     try{
+        let { uid } = req.user
         let { id } = req.params
         let cursoData = await Curso.findOne({_id:id})
         if(!cursoData) return res.status(404).send({message: 'Course not found'})
         if(cursoData.teacher != uid) return res.status(403).send({message: 'You do not have authorization to modify the course'})
         let deleteCur = await Curso.findOneAndDelete({_id: id})
         if(!deleteCur) return res.status(404).send({message: 'The course could not be deleted'})
-        return res.send({message: `The course: ${deletedProduct.name} has been successfully removed`})
+        return res.send({message: `The course: ${deleteCur.name} has been successfully removed`})
     }catch(err){
         console.error(err)
         return res.status(404).send({message: 'Unexpected error while deleting'})
     }
 }
-/*
-export const unirseCurso = async(req,res)=>{
-   
-        if(cursos.length < 3){
-            let cursoUnir = await Curso.find({_id:id})
-            if (!cursoUnir) return res.status(404).send({ message: 'Curso not found' });
-            if (cursoUnir.students.includes(uid)) return res.status(400).send({ message: 'Student is already enrolled in this course' });
-            cursoUnir.students.push(uid)
-            return res.send({message: 'Unido'})
-        }
-}*/
 
 export const unirseCurso = async (req, res) => {
     try {
-        let { id } = req.params;
-        let { uid } = req.user;
-        let cursos = await Curso.find({ students: uid });
-        if (!cursos) {
-            return res.status(404).send({ message: 'Course not found' });
+        //Obtenemos los id para las busquedas
+        let { id, role } = req.params
+        let { uid } = req.user
+        //Buscamos en cuales cursos esta el estudiante
+        let cursoStudent = await Curso.find({ students: uid })
+        //Buscamos el curso que quiere unirse
+        let curso = await Curso.findOne({_id:id})
+        //Validamos si el curso existe
+        if(!curso) return res.status(404).send({ message: 'Course not found' })
+        if(role == 'TEACHER_ROLE') return res.status(403).send({ message: 'You are a teacher you cannot join classes' })
+        //Validamos si el curso ya tiene a este estudiante o todavia no (Si ya esta sera true, entonces lo denegamos con el !)
+        if(curso.students && !(curso.students.includes(uid))) {
+            //Validamos cuantos cursos tiene este estudiante
+            if (cursoStudent.length < 3) {
+                //Lo agregamos al arreglo
+                curso.students.push(uid)
+                //Lo guardamos
+                await curso.save()
+                //La respuesta
+                return res.send({ message: 'You have successfully joined' })
+            }
+            return res.send({ message: 'It is not possible to join more courses' })
         }
-        if (cursos.students && cursos.students.includes(uid)) {
-            return res.status(400).send({ message: 'You are already enrolled in this course' });
-        }
-        if (cursos.length < 3) {
-            let updateCurs = await Curso.findOneAndUpdate(
-                { _id: id },
-                { students: uid }
-            );
-            if(!updateCurs) return res.status(400).send({message: 'Login error'})
-            return res.send({ message: 'Unido' });
-        }
-        return res.send({ message: 'It is not possible to join more courses' });
+        return res.status(400).send({ message: 'You are already enrolled in this course' })
     } catch (err) {
-        console.error(err);
-        return res.status(404).send({ message: 'Unexpected error when adding' });
+        console.error(err)
+        return res.status(404).send({ message: 'Unexpected error when adding' })
     }
 }
