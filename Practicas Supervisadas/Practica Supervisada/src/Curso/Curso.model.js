@@ -19,11 +19,15 @@ export const cursoSchema = Schema({
         type: String,
         required: true
     },
-    user: {
+    teacher: {
         type: mongoose.Schema.ObjectId,
         ref: 'user',
         required: true
-    }
+    },
+    students: [{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'user', 
+    }]
 })
 
 export default model('curso',cursoSchema)

@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { config } from 'dotenv'
+import userRouter from '../src/User/User.routes.js'
 import cursoRouter from '../src/Curso/Curso.routes.js'
 
 const app = express()
@@ -15,6 +16,7 @@ app.use(cors())
 app.use(helmet())
 app.use(morgan('dev'))
 
+app.use(userRouter)
 app.use(cursoRouter)
 
 export const initServer = ()=> {
