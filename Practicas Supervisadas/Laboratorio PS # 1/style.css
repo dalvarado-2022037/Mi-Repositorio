@@ -1,0 +1,259 @@
+/*
+<input type="text" class="inputLine" placeholder="Ingresa tu texto">
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.separador{
+    height: 30vh;
+}
+
+.temanoBoton{
+    width: 10vw;
+    height: 4vh;
+}
+
+.piePagina{
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5.5vh;
+    color: white;
+}
+
+.barra{
+    width: 100vw;
+    height: 10vh;
+}
+
+.contenedor{
+    position: relative;
+    align-items: center;
+}
+
+.login-title {
+    font-family: 'Playfair Display', serif;
+}
+
+.marginSupInf{
+    margin-top: 10vh;
+}
+
+.minMargin{
+    margin-top: 1vh;
+}
+
+.bloque {
+    height: 40vh;
+    flex-basis: 20vw;
+    background-color: #6ab1f7;
+}
+
+.contenedor{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingresoDatosLog{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 5vw;
+}
+
+.inputText{
+    width: 16vw;
+    height: 0.5vh;
+    background-color: blue;
+    border-color: blue;
+}
+
+.inputButton::placeholder{
+    background-color: red;
+}
+
+
+.inputButton{
+    width: 6.3em;
+    height: 1.3em;
+    font-size: 1.5em;
+    background-color: blue;
+    border-color: blue;
+    transition: 0.5s;
+}
+
+.inputButton:hover{
+    transition: 0.5s;
+    background-color: red;
+    border-color: black;
+}
+
+.padingSupInf{
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+}
+
+.padingLaterales{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.logos{
+    width: 4.5%;
+    height: 100%;
+}
+
+.bloqueListaContacto{
+    width: auto;
+    height: max-content;
+    background-color: red;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.bloqueAgregar{
+    width: 70vw;
+    margin: 10%;
+    height: 50vh;
+    background-color: #6ab1f7;
+}
+
+.InfoButton{
+    background-color: red;
+    border-color: red;
+    font-size: 1em;
+}
+
+.inputWithImage {
+    background-image: url('Img/user.png'); /* Ruta a tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    width: 5em;
+    height: 5em;
+}
+
+.inputWithImageMenu {
+    background-image: url('Img/menu.png'); /* Ruta a tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    width: 3em;
+    height: 3em;
+}
+
+.wrapper-1{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0;
+}
+
+.wrapper-1 > div {
+    padding: 1em;
+}
+
+.wrapper-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    gap: 0;
+}
+
+.wrapper-2 > div {
+    padding: 1em;
+}
+
+.wrapper-4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.wrapper-4 > div {
+    padding: 1em;
+}
+
+.card-design{
+    width: 100vw;
+    height: 100vh;
+}
+
+.coleccion-cartas{
+    margin-top: 5em;
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.toda-barra{
+    width: 100%;
+}
+
+.letras-fondo{
+    font-size: 1.5vw;
+    color: black;
+}
+
+.bloque-fondo{
+    height: 84vh;
+    width: 98vw;
+    margin: 1%;
+}
+
+.borde{
+    border: 2px solid #000000;
+}
+
+.padingSupTop{
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.navbarColor{
+    background-color: #6ab1f7;
+}
+
+.fondo{
+    background-color: #3498db;
+}
+
+.uso-Combinado{
+    width: 20vw;
+    height: 50vh;
+    border: 2px solid #000000;
+}
+
+.inputLine {
+    border: none;
+    border-bottom: 1px solid black; /* Color y estilo de la línea */
+    outline: none; /* Elimina el contorno al hacer clic */
+    background-color: transparent; /* Fondo transparente */
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+}
+
+/* Estilos adicionales para resaltar la línea al enfocar */
+.inputLine:focus {
+    border-bottom: 2px solid blue; /* Cambia el color y grosor al enfocar */
+}

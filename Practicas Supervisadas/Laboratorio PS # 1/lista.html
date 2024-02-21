@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Img/Phone.png" type="image/png">
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Lista</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="principal.js" defer></script>
+</head>
+<body class="fondo">
+    <div class="barra toda-barra">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbarColor">
+            <div class="container-fluid ">
+              <img class="logos" src="Img/Logo.png">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="lista.html">Home</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favoritos.html">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agregar.html">Agregar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pendientes.html">Pendientes</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+                <button class="inputWithImageMenu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                </button>
+              </div>
+            </div>
+          </nav>
+    </div>
+    <div class="padingLaterales">
+        <div class="wrapper-4 centrar">
+            <div class="card card-design coleccion-cartas" style="width: 18rem;">
+                <img src="Img/Perfil (4).png" class="card-img-top logos">
+                <div class="card-body">
+                    <h5 class="card-title">Amigo Uni</h5>
+                    <p class="card-text">Colega del colegio, el que se sienta atras mio</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: John</li>
+                    <li class="list-group-item">Apellido: Doe</li>
+                    <li class="list-group-item">Dirección: 123 Main Sta</li>
+                    <li class="list-group-item">Telefono: 6661-8965</li>
+                    <li class="list-group-item">Favorito</li>
+                </ul>
+                <div class="card-body centrar">
+                    <button type="button" class="btn btn-outline-primary"  onclick="informacion('John','Doe')">Informacion</button>
+                </div>
+                
+            </div>
+            <div class="card card-design coleccion-cartas" style="width: 18rem;">
+                <img src="Img/Perfil (1).png" class="card-img-top logos">
+                <div class="card-body">
+                    <h5 class="card-title">Hermana de John</h5>
+                    <p class="card-text">Hermana de John</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: Julia</li>
+                    <li class="list-group-item">Apellido: Smith</li>
+                    <li class="list-group-item">Dirección: 789 Pine Rd</li>
+                    <li class="list-group-item">Telefono: 5575-5678</li>
+                    <li class="list-group-item">No Favorito</li>
+                </ul>
+                <div class="card-body centrar">
+                    <button type="button" class="btn btn-outline-primary"  onclick="informacion('Julia','Smith')">Informacion</button>
+                </div>
+            </div>  
+            <div class="card card-design coleccion-cartas" style="width: 18rem;">
+                <img src="Img/Perfil (3).png" class="card-img-top logos">
+                <div class="card-body">
+                    <h5 class="card-title">Portero</h5>
+                    <p class="card-text">El portero del equipo</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: Bob</li>
+                    <li class="list-group-item">Apellido: Johnson</li>
+                    <li class="list-group-item">Dirección: 456 Oak Ave</li>
+                    <li class="list-group-item">Telefono: 7955-9876</li>
+                    <li class="list-group-item">Favorito</li>
+                </ul>
+                <div class="card-body centrar">
+                    <button type="button" class="btn btn-outline-primary"  onclick="informacion('Bob','Johnson')">Informacion</button>
+                </div>
+            </div>  
+            <div class="card card-design coleccion-cartas" style="width: 18rem;">
+                <img src="Img/Perfil (2).png" class="card-img-top logos">
+                <div class="card-body">
+                    <h5 class="card-title">Hermana pequeña</h5>
+                    <p class="card-text">Numero de mi hermana pequeña Alice</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: Alice</li>
+                    <li class="list-group-item">Apellido: Williams</li>
+                    <li class="list-group-item">Dirección: 321 Birch Ln</li>
+                    <li class="list-group-item">Telefono: 7485-4321</li>
+                    <li class="list-group-item">No Favorito</li>
+                </ul>
+                <div class="card-body centrar">
+                    <button type="button" class="btn btn-outline-primary"  onclick="informacion('Alice','Williams ')">Informacion</button>
+                </div>
+            </div>
+            <div class="card card-design coleccion-cartas" style="width: 18rem;">
+                <img src="Img/user.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Cantante</h5>
+                    <p class="card-text">Posible número de el cantante Michael</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombre: Michael</li>
+                    <li class="list-group-item">Apellido: Jackson</li>
+                    <li class="list-group-item">Dirección: Desconodido</li>
+                    <li class="list-group-item">Telefono: 7659-4321</li>
+                    <li class="list-group-item">Favorito</li>
+                </ul>
+                <div class="card-body centrar">
+                    <button type="button" class="btn btn-outline-primary"  onclick="informacion('Michael','Jackson')">Informacion</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Informacion de Perfil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="wrapper-1 centrar">
+                <input class="inputWithImage btn" type="button">
+                <div class="borde">
+                    <p class="letras-fondo">Nombre: <br>Douglas Humberto</p>
+                    <p class="letras-fondo">Apellido: <br>Alvarado Alvarado</p>
+                    <p class="letras-fondo">Número: <br>4587-6598</p>
+                    <p class="letras-fondo">Direccion: <br>Barrio San Antonio zona 6</p>
+                    <p class="letras-fondo">Correo: <br>dalvarado-2022037 @kinal.edu.gt</p>
+                </div>                
+                <button class="btn btn-outline-danger" type="submit" onclick="salir()">Salir</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
