@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import { config } from 'dotenv'
 import userRoutes from '../src/Usuarios/user.routes.js'
+import categoriaRoutes from '../src/Categorias/categoria.routes.js'
 import productRoutes from '../src/productos/productos.routes.js'
 
 const app = express()//Creamos el servidor
@@ -17,7 +18,8 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 app.use(userRoutes)
-app.use(productRoutes)
+app.use('/categori',categoriaRoutes)
+app.use('/products',productRoutes)
 
 export const initServer = ()=> {
     app.listen(port)

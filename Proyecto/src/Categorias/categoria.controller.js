@@ -10,7 +10,7 @@ export const addCategoria = async(req,res)=>{
         let categoria = new Categoria(data)
         await categoria.save()
         return res.send({message: 'Added invoice'})
-    }catch(error){
+    }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error category could not be added',err})
     }
@@ -22,7 +22,8 @@ export const viewCategoria = async(req, res)=>{
         let categoria = await Categoria.findOne({name})
         if (categoria){
             let loggedCategoria = {
-                name: categoria.name
+                name: categoria.name,
+                description: categoria.description
             }
             return res.send({message: `The ${categoria.name} found`, loggedCategoria})
         }

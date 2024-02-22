@@ -5,8 +5,12 @@ const productSchema = Schema({
         type: String,
         required: true
     },
-    dueDate: {
+    stock: {
         type: String,
+        required: true
+    },
+    dueDate: {
+        type: Date,
         required: true
     },
     description: {

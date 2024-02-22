@@ -1,0 +1,78 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "AdpotionSystemIN6AM",
+    "dateExported": "2024-02-22T22:42:48.231Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "c195dc6a-f4e1-4987-880f-4eb5dc4a7a83",
+            "name": "ADMIN",
+            "containerId": "",
+            "created": "2024-02-22T14:47:34.415Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "40eb5134-2a67-4442-81fc-9f99fdacc6c1",
+            "name": "CLIENT",
+            "containerId": "",
+            "created": "2024-02-22T14:47:42.191Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8e0f9fdf-b5ea-4a5f-bb5a-319a81f1bcc2",
+            "colId": "765a2916-d12e-440e-b29c-54c83b3822fb",
+            "containerId": "c195dc6a-f4e1-4987-880f-4eb5dc4a7a83",
+            "name": "testAppoiment",
+            "url": "localhost:2656/appointment/test",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-22T14:47:53.583Z",
+            "modified": "2024-02-22T14:48:40.290Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "06af07fb-8ac8-4466-9212-e658d88563f7",
+            "colId": "765a2916-d12e-440e-b29c-54c83b3822fb",
+            "containerId": "40eb5134-2a67-4442-81fc-9f99fdacc6c1",
+            "name": "login",
+            "url": "localhost:2656/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-22T15:15:05.700Z",
+            "modified": "2024-02-22T15:16:18.766Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "cdlc"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "c74b6bea-8af4-45b1-a3b9-ca44dfa13069",
+            "colId": "765a2916-d12e-440e-b29c-54c83b3822fb",
+            "containerId": "c195dc6a-f4e1-4987-880f-4eb5dc4a7a83",
+            "name": "save appoint",
+            "url": "",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-22T15:16:49.217Z",
+            "modified": "2024-02-22T15:16:49.218Z",
+            "headers": []
+        }
+    ]
+}

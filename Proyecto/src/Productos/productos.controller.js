@@ -3,7 +3,7 @@
 import Product from './productos.model.js'
 
 export const testProducts = (req, res)=>{
-    return res.send('Conectado')
+    return res.send('Conectado a productos')
 }
 
 export const addProduct = async(req, res)=>{

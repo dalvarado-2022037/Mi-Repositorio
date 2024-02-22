@@ -4,16 +4,17 @@ import Animal from '../animal/animal.model.js'
 import Appointment from '../appointment/appointment.model.js'
 
 export const save = async(req, res)=>{
-    try{/*
+    try{
+        //Capturar la data
+        let data = req.body
+        data.user = req.user._id
+        
         let regex = /\d[2][/]/g
         let regexAno = /\d[5][/]/g
         let fecha = data.date
         let fecha2 = fecha.replaceAll(regex, '')
         console.log(fecha2)
-        console.log(fecha2.replaceAll(regexAno, ''))*/
-        //Capturar la data
-        let data = req.body
-        data.user = req.user._id
+        console.log(fecha2.replaceAll(regexAno, ''))
         //delete data.status
         //Verificar que exista el animal
         let animal = await Animal.findOne({_id: data.animal})
@@ -33,8 +34,6 @@ export const save = async(req, res)=>{
                 }
             ]
         })
-        if(animal == data.animal && user == data.user
-            || date == data.date && user == data.user)return a 
         if(appointmentExist) return res.send({message: 'Appointment already exist'})
         
         //Guardar
@@ -44,6 +43,20 @@ export const save = async(req, res)=>{
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error saving appointment', err}) 
+    }
+}
+
+export const getAppointmentByUser = async(req, res)=>{
+    try{
+        //Capturar el id del usuario logeado
+        let { _id } = req.user
+        //Buscar los datos ({parametro: 0}) -> no devuelva ese parametro
+        let appointments = await Appointment.find({user: _id}, {user: 0})
+            .populate('animal')
+        return res.send({message: 'Yout appointments: ', appointments})
+    }catch(err){
+        console.error(err)
+        return res.status(500).sed({message: 'Error getting appointments', err}) 
     }
 }
 
