@@ -1,11 +1,7 @@
-import { Schema, model} from "mongoose";
+import mongoose, { Schema, model} from "mongoose";
 
 const productSchema = Schema({
     name: {
-        type: String,
-        required: true
-    },
-    category: {
         type: String,
         required: true
     },
@@ -19,6 +15,11 @@ const productSchema = Schema({
     },
     price: {
         type: Number,
+        required: true
+    },
+    category: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'categoria',
         required: true
     }
 })
