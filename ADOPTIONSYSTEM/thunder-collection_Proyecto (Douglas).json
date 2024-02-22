@@ -1,0 +1,205 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Proyecto (Douglas)",
+    "dateExported": "2024-02-22T23:16:06.052Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "Categoria",
+            "containerId": "",
+            "created": "2024-02-22T22:44:41.813Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "da8c5e8f-1a2c-41c7-9b4f-489fdc256080",
+            "name": "Productos",
+            "containerId": "",
+            "created": "2024-02-22T23:02:52.156Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "67f314c6-efd5-45dd-b674-0e615ba65401",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "testCategoria",
+            "url": "categori/testCategoria",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-22T22:48:39.926Z",
+            "modified": "2024-02-22T22:48:52.019Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3379ef7a-3e29-4745-9725-f261a48d5ae3",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "addCategoria",
+            "url": "categori/addCategoria",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-22T22:51:36.780Z",
+            "modified": "2024-02-22T22:52:46.336Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Especias"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Para todas las especias de rango 1"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "2a1c407c-f383-4827-addf-2e21ac080b3c",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "viewCategoria",
+            "url": "categori/viewCategoria",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-22T22:55:59.672Z",
+            "modified": "2024-02-22T22:56:29.288Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Especias"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3b2b5977-8a3b-4e46-80f3-7b57af9866d2",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "lookForAllCategoria",
+            "url": "categori/lookForAllCategoria",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-22T22:57:15.390Z",
+            "modified": "2024-02-22T22:57:23.218Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ee4ac81f-2ed2-4f72-bbfc-5ac2bbc89b6d",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "updateCategoria",
+            "url": "categori/updateCategoria/65d7d08b687f80d19eda456c",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-02-22T22:57:44.487Z",
+            "modified": "2024-02-22T22:58:45.218Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Especias 1"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a41ab6d2-ad6f-463b-a0a5-244f0558d6ad",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "c2f83827-c820-414f-889c-f7705d94c76b",
+            "name": "deleteCategoria",
+            "url": "categori/daleteCategoria/65d7d08b687f80d19eda456c",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-22T22:59:07.124Z",
+            "modified": "2024-02-22T22:59:22.808Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b899da82-d8f4-4066-aa4d-b6d0847496fd",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "da8c5e8f-1a2c-41c7-9b4f-489fdc256080",
+            "name": "testProduct",
+            "url": "products/testProduct",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-22T23:03:04.892Z",
+            "modified": "2024-02-22T23:03:25.410Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d283d633-7a57-4ce6-968e-143d44d8349d",
+            "colId": "f7a92869-644d-4290-a467-82476f2d6bcc",
+            "containerId": "da8c5e8f-1a2c-41c7-9b4f-489fdc256080",
+            "name": "addProduct",
+            "url": "products/addProduct",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-22T23:04:36.418Z",
+            "modified": "2024-02-22T23:08:10.768Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Espinacas Sampo"
+                    },
+                    {
+                        "name": "stock",
+                        "value": "25"
+                    },
+                    {
+                        "name": "dueDate",
+                        "value": "2024-05-12 15:00"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Espinacas de popeye"
+                    },
+                    {
+                        "name": "price",
+                        "value": "25.88"
+                    },
+                    {
+                        "name": "category",
+                        "value": "65d7d2d70ed5b5fb75d852ce"
+                    }
+                ]
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3200/"
+        }
+    }
+}
