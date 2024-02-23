@@ -7,12 +7,10 @@ export const save = async(req, res)=>{
     try{
         //Capturar la data
         let data = req.body
-        data.user = req.user._id
-        
+        data.user = req.user._id        
         let regex = /(\d{4})\/(\d{2})\/(\d{2})/
-        let fecha = data.date
-        console.log(fecha.replaceAll(regex, ''))
         //delete data.status
+        console.log(data.date.replaceAll(regex,''))
         //Verificar que exista el animal
         let animal = await Animal.findOne({_id: data.animal})
         if(!animal) return res.status(404).send({message: 'Animal not found'})
@@ -26,11 +24,12 @@ export const save = async(req, res)=>{
                     user: data.user
                 },
                 {
-                    date: data.date,
+                    date: { $regex: `^${regex}` },
                     user: data.user
                 }
             ]
         })
+        console.log(appointmentExist.date)
         if(appointmentExist) return res.send({message: 'Appointment already exist'})
         
         //Guardar
