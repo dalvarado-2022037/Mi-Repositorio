@@ -1,0 +1,116 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ADOPTIONSYSTEM(Douglas)",
+    "dateExported": "2024-02-23T23:11:41.071Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b1b7e342-37b3-42d8-861e-c30880346bdb",
+            "name": "UserAdmin",
+            "containerId": "",
+            "created": "2024-02-19T20:41:30.938Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "93a7beee-2965-4fb6-86a3-f547f288a32a",
+            "name": "UserClient",
+            "containerId": "",
+            "created": "2024-02-19T20:41:40.139Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "80af4291-e0fd-4b6b-8efc-73faa464eef4",
+            "name": "Public",
+            "containerId": "",
+            "created": "2024-02-19T20:41:49.187Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "8beca135-2037-4c87-be72-08afad463f5c",
+            "colId": "9b957646-022b-47c2-af4c-52efff40c2e6",
+            "containerId": "80af4291-e0fd-4b6b-8efc-73faa464eef4",
+            "name": "login",
+            "url": "/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-22T19:22:48.366Z",
+            "modified": "2024-02-22T19:24:35.529Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "paco"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "956df324-f597-4b46-9d0e-f09a4c91c38d",
+            "colId": "9b957646-022b-47c2-af4c-52efff40c2e6",
+            "containerId": "80af4291-e0fd-4b6b-8efc-73faa464eef4",
+            "name": "appointment/saveAp",
+            "url": "/appointment/saveAp",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-22T19:26:14.747Z",
+            "modified": "2024-02-23T22:08:18.305Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWM2OGYyNTI1NDE4YTMxMmIxOWUyMzciLCJ1c2VybmFtZSI6InBhY28iLCJuYW1lIjoiSnVhbml0byAgIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzA4NzI2MDc5LCJleHAiOjE3MDg3MzY4Nzl9.1Oq3VSvSDuwsl98WPCl6rqjEa5GNdPE0zA97nD0WKKQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "animal",
+                        "value": "65c6b4e884f8cc4386aedfc7"
+                    },
+                    {
+                        "name": "date",
+                        "value": "2024/02/22 15:02"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "1aab143a-9e50-472f-ac65-323e4f1591e4",
+            "colId": "9b957646-022b-47c2-af4c-52efff40c2e6",
+            "containerId": "80af4291-e0fd-4b6b-8efc-73faa464eef4",
+            "name": "getAppointments",
+            "url": "/appointment/getAppointmentByUser",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-22T23:13:54.021Z",
+            "modified": "2024-02-22T23:14:21.007Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWM2OGYyNTI1NDE4YTMxMmIxOWUyMzciLCJ1c2VybmFtZSI6InBhY28iLCJuYW1lIjoiSnVhbml0byAgIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzA4NjQzNjE3LCJleHAiOjE3MDg2NTQ0MTd9.U6Dq4JERu4oL1LGuhmMBN3I7w3CTvKKTRZlUngE9jq8"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:2880"
+        }
+    }
+}

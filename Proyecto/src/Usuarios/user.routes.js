@@ -11,4 +11,3 @@ api.put('/updateUser/:id', [validateJwt], updateUser)
 api.delete('/deleteUser/:id', [validateJwt], deleteUser)
 
 export default api
-

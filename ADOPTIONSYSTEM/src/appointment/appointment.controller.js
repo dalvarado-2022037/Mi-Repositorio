@@ -10,7 +10,6 @@ export const save = async(req, res)=>{
         data.user = req.user._id        
         let regex = /(\d{4})\/(\d{2})\/(\d{2})/
         //delete data.status
-        console.log(data.date.replaceAll(regex,''))
         //Verificar que exista el animal
         let animal = await Animal.findOne({_id: data.animal})
         if(!animal) return res.status(404).send({message: 'Animal not found'})

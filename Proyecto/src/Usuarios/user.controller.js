@@ -8,6 +8,28 @@ export const testUser = (req, res)=>{
     return res.send('Connect User')
 }
 
+export const adminDefault = async(req, res)=>{
+    try{
+        let userExist = User.findOne({username: 'dalvarado'})
+        if(!userExist){
+            let data = {
+                name: 'Douglas',
+                surname: 'Alvarado',
+                username: 'dalvarado',
+                gmail: 'dalvarado@kinal.edu.gt',
+                password: '12345678',
+                role: 'ADMIN'
+            }
+            data.password = await encrypt(data.password)
+            let user = new User(data)
+            await user.save()
+        }
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error adding administrator'})
+    }
+}
+
 export const register = async(req, res)=>{
     try{
         let data = req.body

@@ -1,7 +1,32 @@
 import Factura from './factura.model.js'
+import Products from '../Productos/productos.model.js'
+let productos = []
 
 export const testFactura = (req, res)=>{
     return res.send('Conectado a Factura')
+}
+
+export const shoppingCart = async(req, res)=>{
+    try{
+        let { id } = req.params
+        let { cantidad } = req.body
+        let productEsxit = Products.findOne({_id: id})
+        if(!productEsxit) return res.status(404).send({message: 'The product does not exist',err})
+        if(cantidad>productEsxit.stock) return res.status(400).send({message: 'There are not enough products',err})
+
+        let data = {stock: productEsxit.stock - cantidad}
+        let updatedProduct = await Products.findOneAndUpdate(
+            {_id: id},
+            data,
+            {new: true}
+        )
+        if(!updatedProduct) return res.status(401).send({message: 'Product could not be added'})
+        productos.put[id]
+        return res.send({message: 'Product added to shopping cart'})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error when placing the shopping cart',err})
+    }
 }
 
 export const addFactura = async(req,res)=>{
@@ -40,33 +65,5 @@ export const lookForAllFactura = async(req,res)=>{
     }catch(error){        
         console.error(err)
         return res.status(404).send({message: 'Error when searching'})
-    }
-}
-
-export const updateFactura = async(req,res)=>{
-    try{
-        let { id } = req.params
-        let data = req.body
-        let updatedFactu = await Factura.findOneAndUpdate(
-            {_id: id},
-            data,
-            {new: true}
-        )
-        if(!updateFactu) return res.status(401).send({message: 'The bill could not be updated'})
-        return res.send({message: 'Updated bill', updatedFactu})
-    }catch(error){
-        console.error(err)
-        return res.status(404).send({message: 'Unexpected error while updating'})
-    }
-}
-
-export const daleteFactura = async(req, res)=>{
-    try{
-        let { id } = req.params
-        let deleteFactu = await Factura.findOneAndDelete({_id:id})
-        if(!deleteFactu) return res.status(404).send({message: 'The bill could not be deleted'})
-        return res.send({message: `The course: ${deleteFactu.name} has been successfully removed`})
-    }catch(error){
-        
     }
 }

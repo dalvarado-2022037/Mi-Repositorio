@@ -1,4 +1,5 @@
-import mongoose, { Schema, model} from "mongoose";
+import mongoose, { Schema, model} from 'mongoose'
+import { categoriDefault } from './productos.controller.js'
 
 const productSchema = Schema({
     name: {
@@ -20,6 +21,10 @@ const productSchema = Schema({
     price: {
         type: Number,
         required: true
+    },
+    venta: {
+        type: Number,
+        default: 0
     },
     category: {
         type: mongoose.Schema.ObjectId,
