@@ -10,6 +10,7 @@ export const validateJwt = async(req,res,next)=>{
         let user = await User.findOne({_id: uid})
         if(!user) return res.status(404).send({message: 'User not found - Unauthorized'})
         req.user = user
+        req.user.uid = uid
         next()
     }catch(err){
         console.error(err)

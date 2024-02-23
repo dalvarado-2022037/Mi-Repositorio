@@ -9,12 +9,9 @@ export const save = async(req, res)=>{
         let data = req.body
         data.user = req.user._id
         
-        let regex = /\d[2][/]/g
-        let regexAno = /\d[5][/]/g
+        let regex = /(\d{4})\/(\d{2})\/(\d{2})/
         let fecha = data.date
-        let fecha2 = fecha.replaceAll(regex, '')
-        console.log(fecha2)
-        console.log(fecha2.replaceAll(regexAno, ''))
+        console.log(fecha.replaceAll(regex, ''))
         //delete data.status
         //Verificar que exista el animal
         let animal = await Animal.findOne({_id: data.animal})

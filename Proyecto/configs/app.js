@@ -17,7 +17,7 @@ app.use(cors())
 app.use(helmet())
 app.use(morgan('dev'))
 
-app.use(userRoutes)
+app.use('/user',userRoutes)
 app.use('/categori',categoriaRoutes)
 app.use('/products',productRoutes)
 
