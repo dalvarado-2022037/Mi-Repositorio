@@ -2,7 +2,7 @@ import { compare, hash } from 'bcrypt';
 
 export const encrypt = async(password)=>{
     try{
-        return await hash(password, 10)//El valor y cuantas capas
+        return await hash(password, 10)
     }catch(err){
         console.error(err)
         return err
@@ -18,14 +18,10 @@ export const checkPassword = async(password, has)=>{
     }
 }
 
-export const checkUpdate = (data, userId)=>{
-    if(userId){
+export const checkUpdate = (data, entity)=>{
+    if(entity == 'user'){
         if(
-            Object.entries(data).length == 0 || 
-            data.password ||
-            data.password == '' ||
-            data.role ||
-            data.role == ''
+            Object.entries(data).length == 0
         )return false
         return true
     }else{

@@ -1,0 +1,1 @@
+Verificar si al eliminar la categoria cambia la categoria

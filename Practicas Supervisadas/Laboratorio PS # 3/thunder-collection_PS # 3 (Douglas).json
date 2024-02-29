@@ -1,0 +1,393 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "PS # 3 (Douglas)",
+    "dateExported": "2024-02-29T06:13:03.789Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "1ea51010-e065-4572-8a3f-94581e9acde0",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-02-27T02:51:06.031Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "Publicacion",
+            "containerId": "",
+            "created": "2024-02-27T02:51:16.312Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "Comentario",
+            "containerId": "",
+            "created": "2024-02-27T02:51:22.664Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "86dc69da-d25d-4b3a-bfd0-577cce082df7",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "1ea51010-e065-4572-8a3f-94581e9acde0",
+            "name": "test",
+            "url": "user/test",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-27T04:01:00.416Z",
+            "modified": "2024-02-27T04:01:56.318Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "677e6ce0-f786-4ada-bf6b-5893498e1249",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "test",
+            "url": "public/test",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-02-27T04:04:52.079Z",
+            "modified": "2024-02-27T04:04:57.466Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4bf01416-14dc-446d-8f56-76997715976c",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "test",
+            "url": "comment/test",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-27T04:05:07.534Z",
+            "modified": "2024-02-29T04:57:07.353Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5e4cc201-fb72-4b06-957b-6ff9035c087d",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "1ea51010-e065-4572-8a3f-94581e9acde0",
+            "name": "register",
+            "url": "user/register",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-27T04:15:05.758Z",
+            "modified": "2024-02-27T04:19:13.574Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Douglas"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Alvarado"
+                    },
+                    {
+                        "name": "userName",
+                        "value": "dalvarado"
+                    },
+                    {
+                        "name": "gmail",
+                        "value": "dalvarado@kinal.edu.gt"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "age",
+                        "value": "18"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "3d5ba80c-3d77-442b-b1a6-2d35ac7c2130",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "1ea51010-e065-4572-8a3f-94581e9acde0",
+            "name": "login",
+            "url": "user/login",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-28T02:51:56.288Z",
+            "modified": "2024-02-29T04:02:17.699Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "dalvarado"
+                    },
+                    {
+                        "name": "gmail",
+                        "value": "dalvarado@kinal.edu.gt",
+                        "isDisabled": true
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "e4a1a891-29a6-47bc-807b-04cf3323dece",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "1ea51010-e065-4572-8a3f-94581e9acde0",
+            "name": "update",
+            "url": "user/update",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-02-28T03:22:32.784Z",
+            "modified": "2024-02-29T04:02:24.757Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Douglas 3"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "passwordInto",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "0a111102-3c4d-4048-a2e8-20bd34e5398c",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "addPublication",
+            "url": "public/addPublication",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-28T04:36:09.539Z",
+            "modified": "2024-02-29T04:11:14.779Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "titulo",
+                        "value": "Focas en Peligro"
+                    },
+                    {
+                        "name": "categoría",
+                        "value": "information"
+                    },
+                    {
+                        "name": "textoprincipal",
+                        "value": "Las focas ultimamente han estado desapareciendo de los oceanos"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "e0365220-b8db-437b-aa49-cad813222726",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "lookAllPublication",
+            "url": "public/lookAllPublication",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-02-28T04:48:46.833Z",
+            "modified": "2024-02-28T04:49:03.174Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "47669064-b240-4195-b165-8e7e668dac2d",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "lookAtMyPosts",
+            "url": "public/lookAtMyPosts",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-28T04:57:47.488Z",
+            "modified": "2024-02-28T04:58:07.606Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b1fc80e1-922b-4160-a1fc-2cf961fb240c",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "updatePublication",
+            "url": "public/updatePublication/",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-02-29T03:56:05.390Z",
+            "modified": "2024-02-29T04:11:30.591Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "titulo",
+                        "value": "Peligro de extincion Focas Marinas"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "414b3ffc-0d27-4468-9c32-b5910cc28412",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "deletePublication",
+            "url": "public/deletePublication/",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2024-02-29T03:57:19.535Z",
+            "modified": "2024-02-29T04:11:25.428Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "29edbbb4-de3f-42fb-a4bb-aabb79f81037",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "addComment",
+            "url": "comment/addComment/",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-02-29T04:57:14.681Z",
+            "modified": "2024-02-29T06:12:18.338Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "content",
+                        "value": "Salven a las Focas"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "6beb3d21-3b26-4547-9ce5-c7a584f70075",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "updateComment",
+            "url": "comment/updateComment/",
+            "method": "PUT",
+            "sortNum": 150000,
+            "created": "2024-02-29T06:11:29.336Z",
+            "modified": "2024-02-29T06:12:12.424Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "content",
+                        "value": "Ya no dije nada"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f5495cb6-45bd-481f-9bf5-0a93428ea302",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "deleteCommen",
+            "url": "comment/deleteCommen/",
+            "method": "DELETE",
+            "sortNum": 160000,
+            "created": "2024-02-29T06:12:25.401Z",
+            "modified": "2024-02-29T06:12:55.291Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3000/"
+        },
+        "envId": "08a74599-0fe5-4f4d-a79c-da77e12aac2c"
+    }
+}
