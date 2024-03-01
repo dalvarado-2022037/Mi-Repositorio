@@ -5,26 +5,30 @@ const publicacionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    categoría:{
-        type: String,
-        required: true,
-        uppercase: true,
-        enum: ['INFORMATION',
-            'ENTERTAINMENT',
-            'EDUCATIONAL',
-            'OPINION',
-            'SPORTS',
-            'ART AND CULTURE']
-    },
     textoprincipal:{
         type: String,
+        required: true
+    },
+    categoria:{
+        type: mongoose.Schema.ObjectId,
+        ref: 'category',
         required: true
     },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'user',
         required: true
-    }
+    },
+    like: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: true
+    }],
+    dislike: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: true
+    }],
 })
 
 export default mongoose.model('publication', publicacionSchema)

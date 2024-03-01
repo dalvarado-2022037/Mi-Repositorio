@@ -15,14 +15,14 @@ const commentSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    like: {
-        type: Number,
-        default: 0
-    },
-    deslike: {
-        type: Number,
-        default: 0
-    }
+    like: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'user'
+    }],
+    deslike: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'user'
+    }]
 })
 
 export default mongoose.model('comment', commentSchema)

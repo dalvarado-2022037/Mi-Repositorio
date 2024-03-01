@@ -11,7 +11,8 @@ export const test = (req, res)=>{
 export const register = async(req, res)=>{
     try{
         let data = req.body
-        if(!data) return res.status(402).send({message: 'No data sent'})
+        if(!data) 
+            return res.status(402).send({message: 'No data sent'})
         let user = new User(data)
         user.password = await encrypt(user.password)
         try{
@@ -55,27 +56,35 @@ export const login = async(req, res)=>{
 
 export const update = async(req, res)=>{
     try{
-        let { id } = req.user
+        let { uid } = req.user
+        let { id } = req.params
         let data = req.body
         let updateVerify = checkUpdate(data, 'user')
-        if(!updateVerify) return res.status(400).send({message: 'Have sumbmitted some data that cannot be updated or missing data'})
-        if(data.password){
+
+        if(!updateVerify) 
+            return res.status(400).send({message: 'Have sumbmitted some data that cannot be updated or missing data'})
+        
+        if(data.passwordModify)
             if(!data.passwordInto)
                 return res.status(400).send({message: 'Please enter your account passwordInto'})
-        }
+
+        if(uid != id) 
+            return res.status(403).send({message: 'You cannot alter this users information.'})
 
         //Verificamos que la contraseña sea la misma a la que se esta ingresando
-        let userCheck = await User.findOne({_id: id})        
+        let userCheck = await User.findOne({_id: uid})        
         if(!await checkPassword(data.passwordInto, userCheck.password))
             return res.status(400).send({message: 'Invalid credentials'})
         
-        data.password = await encrypt(data.password)
+        data.password = await encrypt(data.passwordModify)
         let updateUser = await User.findOneAndUpdate(
             {_id: id},
             data,
             {new: true}
         )
-        if(!updateUser) return res.status(401).send({message: 'User not found and not updated'})
+        if(!updateUser) 
+            return res.status(401).send({message: 'User not found and not updated'})
+        
         return res.send({message: 'Updated user', updateUser})
     }catch(err){
         console.error(err)

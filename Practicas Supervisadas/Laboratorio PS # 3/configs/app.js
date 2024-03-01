@@ -6,6 +6,7 @@ import { config } from 'dotenv'
 //Importaciones de la rutas
 import userRouter from '../src/user/user.routes.js'
 import publicRouter from '../src/publicacion/public.routes.js'
+import categoryRouter from '../src/category/category.routes.js'
 import comentRouter from '../src/comentario/comment.routes.js'
 
 const app = express()
@@ -21,6 +22,7 @@ app.use(morgan('dev'))
 //Usamos las rutas
 app.use('/user',userRouter)
 app.use('/public',publicRouter)
+app.use('/category',categoryRouter)
 app.use('/comment',comentRouter)
 
 export const initServer = ()=> {
