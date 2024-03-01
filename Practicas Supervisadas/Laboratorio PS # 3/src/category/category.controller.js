@@ -59,6 +59,27 @@ export const deleteCategory = async(req, res)=>{
     }
 }
 
+export const viewAllCategory = async(req, res)=>{
+    try{
+        let category = await Category.find({})
+        return res.send({message: 'The categorys: ', category})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error connecting to name'}) 
+    }
+}
+
+export const viewCategory = async(req, res)=>{
+    try{
+        let { id } = req.params
+        let category = await Category.find({_id: id})
+        return res.send({message: 'The categorys: ', category})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error connecting to name'}) 
+    }
+}
+
 /**
     try{
         

@@ -92,6 +92,35 @@ export const lookAtMyPosts = async(req, res)=>{
     }
 }
 
+export const lookAtPosts = async(req, res)=>{
+    try{
+        let { id } = req.params
+        let publications = await Publication.find({_id: id})
+        // Mapear las publicaciones para ajustar su formato
+        // La funcion map sirve para transformar cada elemento de un array y devolver un nuevo array 
+        // Con los cambios en la funcion, es como reconfigurar todo
+        publications = publications.map(publication => {
+            // Obtener la cantidad de likes y dislikes
+            const likeCount = publication.like.length
+            const dislikeCount = publication.dislike.length
+
+            // Crear un objeto con el formato deseado
+            return {
+                userName: publication.user.userName, // Nombre del usuario
+                titulo: publication.titulo, // Título de la publicación
+                textoprincipal: publication.textoprincipal, // Texto principal de la publicación
+                likeCount: likeCount, // Cantidad de likes
+                dislikeCount: dislikeCount // Cantidad de dislikes
+            }
+        })
+
+        return res.send({message: 'Publications: ', publications})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error connecting to lookAtMyPosts'}) 
+    }
+}
+
 export const updatePublication = async(req, res)=>{
     try{
         let { id } = req.params

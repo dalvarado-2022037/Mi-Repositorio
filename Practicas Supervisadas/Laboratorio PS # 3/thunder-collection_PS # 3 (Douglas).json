@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "PS # 3 (Douglas)",
-    "dateExported": "2024-03-01T05:18:09.548Z",
+    "dateExported": "2024-03-01T07:36:48.836Z",
     "version": "1.1",
     "folders": [
         {
@@ -322,7 +322,7 @@
             "method": "POST",
             "sortNum": 130000,
             "created": "2024-02-29T04:57:14.681Z",
-            "modified": "2024-03-01T04:45:27.792Z",
+            "modified": "2024-03-01T07:35:25.226Z",
             "headers": [
                 {
                     "name": "token",
@@ -552,6 +552,25 @@
             "sortNum": 230000,
             "created": "2024-03-01T04:25:00.947Z",
             "modified": "2024-03-01T04:45:05.801Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ae21c9be-77df-45da-988c-5a71e780c762",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "lookAtPostsComment",
+            "url": "comment/lookAtPostsComment/65e152395e13b95dfe56d98e",
+            "method": "GET",
+            "sortNum": 230000,
+            "created": "2024-03-01T07:31:16.295Z",
+            "modified": "2024-03-01T07:35:07.701Z",
             "headers": [
                 {
                     "name": "token",

@@ -162,3 +162,35 @@ export const dislikeComment = async(req, res)=>{
         return res.status(500).send({message: 'Error connecting to dislikeComment'}) 
     }
 }
+
+export const lookAtPostsComment = async(req, res)=>{
+    try{
+        let { id } = req.params
+        let comment = await Comment.find({publication: id}).populate('publication').populate('user')
+
+        comment = comment.map(comment => {
+            const likeCountComment = comment.like.length
+            const dislikeCountComment = comment.deslike.length
+            const likeCountPublicate = comment.publication.like.length
+            const dislikeCountPublicate = comment.publication.dislike.length
+
+            return {
+                userName: comment.publication.user.userName, 
+                titulo: comment.publication.titulo,  
+                textoprincipal: comment.publication.textoprincipal,
+                likeCount: likeCountPublicate, 
+                dislikeCount: dislikeCountPublicate,
+                userNameComment: comment.user.userName,
+                content: comment.content,
+                likeCountComment: likeCountComment, 
+                dislikeCountComment: dislikeCountComment,
+
+            }
+        })
+
+        return res.send({message: 'Publications: ', comment})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error connecting to lookAtMyPosts'}) 
+    }
+}
