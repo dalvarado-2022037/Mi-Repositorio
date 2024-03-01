@@ -2,6 +2,7 @@
 
 import Comment from './comment.model.js'
 import Publication from '../publicacion/public.model.js'
+import User from '../user/user.modul.js'
 
 export const test = (req, res)=>{
     res.send({message: 'Connected to comment'})
@@ -167,6 +168,7 @@ export const lookAtPostsComment = async(req, res)=>{
     try{
         let { id } = req.params
         let comment = await Comment.find({publication: id}).populate('publication').populate('user')
+        let { userName } = await User.findOne({_id:comment[1].publication.user})
 
         comment = comment.map(comment => {
             const likeCountComment = comment.like.length
@@ -174,8 +176,8 @@ export const lookAtPostsComment = async(req, res)=>{
             const likeCountPublicate = comment.publication.like.length
             const dislikeCountPublicate = comment.publication.dislike.length
 
-            return {
-                userName: comment.publication.user.userName, 
+            let publicationComplete = {
+                userName: userName,
                 titulo: comment.publication.titulo,  
                 textoprincipal: comment.publication.textoprincipal,
                 likeCount: likeCountPublicate, 
@@ -184,8 +186,8 @@ export const lookAtPostsComment = async(req, res)=>{
                 content: comment.content,
                 likeCountComment: likeCountComment, 
                 dislikeCountComment: dislikeCountComment,
-
             }
+            return publicationComplete
         })
 
         return res.send({message: 'Publications: ', comment})

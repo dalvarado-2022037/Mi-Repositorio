@@ -67,16 +67,17 @@ export const update = async(req, res)=>{
         if(data.passwordModify)
             if(!data.passwordInto)
                 return res.status(400).send({message: 'Please enter your account passwordInto'})
+            else{
+                let userCheck = await User.findOne({_id: uid})
+                if(!await checkPassword(data.passwordInto, userCheck.password))
+                    return res.status(400).send({message: 'Invalid credentials'})
+                data.password = await encrypt(data.passwordModify)
+            }
 
         if(uid != id) 
             return res.status(403).send({message: 'You cannot alter this users information.'})
 
         //Verificamos que la contraseña sea la misma a la que se esta ingresando
-        let userCheck = await User.findOne({_id: uid})        
-        if(!await checkPassword(data.passwordInto, userCheck.password))
-            return res.status(400).send({message: 'Invalid credentials'})
-        
-        data.password = await encrypt(data.passwordModify)
         let updateUser = await User.findOneAndUpdate(
             {_id: id},
             data,
