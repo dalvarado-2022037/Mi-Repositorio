@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "PS # 3 (Douglas)",
-    "dateExported": "2024-02-29T06:13:03.789Z",
+    "dateExported": "2024-03-01T05:18:09.548Z",
     "version": "1.1",
     "folders": [
         {
@@ -24,6 +24,13 @@
             "containerId": "",
             "created": "2024-02-27T02:51:22.664Z",
             "sortNum": 30000
+        },
+        {
+            "_id": "aea9dcf4-7e3f-4e83-a8a6-1ed45fbe8359",
+            "name": "Categoria",
+            "containerId": "",
+            "created": "2024-03-01T02:09:05.422Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
@@ -192,7 +199,7 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2024-02-28T04:36:09.539Z",
-            "modified": "2024-02-29T04:11:14.779Z",
+            "modified": "2024-03-01T03:57:45.727Z",
             "headers": [
                 {
                     "name": "token",
@@ -209,8 +216,8 @@
                         "value": "Focas en Peligro"
                     },
                     {
-                        "name": "categoría",
-                        "value": "information"
+                        "name": "categoria",
+                        "value": "65e1446934bf754bb132ebb3"
                     },
                     {
                         "name": "textoprincipal",
@@ -296,7 +303,7 @@
             "method": "DELETE",
             "sortNum": 120000,
             "created": "2024-02-29T03:57:19.535Z",
-            "modified": "2024-02-29T04:11:25.428Z",
+            "modified": "2024-03-01T03:01:42.762Z",
             "headers": [
                 {
                     "name": "token",
@@ -315,7 +322,7 @@
             "method": "POST",
             "sortNum": 130000,
             "created": "2024-02-29T04:57:14.681Z",
-            "modified": "2024-02-29T06:12:18.338Z",
+            "modified": "2024-03-01T04:45:27.792Z",
             "headers": [
                 {
                     "name": "token",
@@ -374,6 +381,177 @@
             "sortNum": 160000,
             "created": "2024-02-29T06:12:25.401Z",
             "modified": "2024-02-29T06:12:55.291Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "49f02f56-81df-4af2-8a4a-16fd8c26234c",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "likePublication Copy",
+            "url": "comment/likeComent/",
+            "method": "PUT",
+            "sortNum": 170000,
+            "created": "2024-03-01T04:43:11.952Z",
+            "modified": "2024-03-01T04:47:27.465Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "66e4b6b7-bb75-4614-b634-25301ec68529",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "aea9dcf4-7e3f-4e83-a8a6-1ed45fbe8359",
+            "name": "test",
+            "url": "category/test",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-03-01T02:09:33.403Z",
+            "modified": "2024-03-01T02:09:39.328Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5a5aa462-ca1a-4ae2-89ea-a131787dd90f",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "9cb449b9-8381-4055-b5e9-da0d26a51427",
+            "name": "dislikePublication Copy",
+            "url": "comment/dislikeComment/65e15d66fcee6a8baa4cd8c8",
+            "method": "PUT",
+            "sortNum": 180000,
+            "created": "2024-03-01T04:43:19.063Z",
+            "modified": "2024-03-01T04:45:53.359Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a2cc6353-adbb-4f2d-b934-1a48ef4af16a",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "aea9dcf4-7e3f-4e83-a8a6-1ed45fbe8359",
+            "name": "addCategory",
+            "url": "category/addCategory",
+            "method": "POST",
+            "sortNum": 190000,
+            "created": "2024-03-01T02:27:17.865Z",
+            "modified": "2024-03-01T02:58:55.627Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Informacion"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Publicaciones informaticas"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "44a48238-7285-4f52-91ed-46af13f37459",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "aea9dcf4-7e3f-4e83-a8a6-1ed45fbe8359",
+            "name": "updateCategory",
+            "url": "category/updateCategory/",
+            "method": "PUT",
+            "sortNum": 200000,
+            "created": "2024-03-01T02:37:54.547Z",
+            "modified": "2024-03-01T02:39:16.091Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Informatico"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "415f109c-f8ec-4ae8-aadb-e7fdc38dbb58",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "aea9dcf4-7e3f-4e83-a8a6-1ed45fbe8359",
+            "name": "deleteCategory",
+            "url": "category/deleteCategory/",
+            "method": "DELETE",
+            "sortNum": 210000,
+            "created": "2024-03-01T02:46:45.547Z",
+            "modified": "2024-03-01T02:47:17.494Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "950d110d-56ae-4ba7-be8f-f173eced66b4",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "likePublication",
+            "url": "public/likePublication/65e152395e13b95dfe56d98e",
+            "method": "PUT",
+            "sortNum": 220000,
+            "created": "2024-03-01T03:38:03.549Z",
+            "modified": "2024-03-01T04:44:56.135Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "{{token}}"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "721d9c4e-8282-4512-87df-c7fdccf6dfb0",
+            "colId": "bff562fe-d76b-47c2-96bc-0bcc6410f61a",
+            "containerId": "bdd47a70-b87b-4285-a0f4-dd8cfa2e7ec6",
+            "name": "dislikePublication",
+            "url": "public/dislikePublication/65e152395e13b95dfe56d98e",
+            "method": "PUT",
+            "sortNum": 230000,
+            "created": "2024-03-01T04:25:00.947Z",
+            "modified": "2024-03-01T04:45:05.801Z",
             "headers": [
                 {
                     "name": "token",
