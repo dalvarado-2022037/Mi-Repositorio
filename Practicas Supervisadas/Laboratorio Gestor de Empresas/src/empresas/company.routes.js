@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { addCompany, companyDelete, companyUpdate, searchCompany, searchCompanyCategory, searchCompanyDate, test, viewAllCompany, viewCompany } from './company.controller.js'
+import { addCompany, companyDelete, companyUpdate, excelCompany, searchCompany, test, viewAllCompany, viewCompany } from './company.controller.js'
 import { validateJwt } from '../middlewares/validate-jwt.js'
 
 const api = Router()
@@ -11,7 +11,7 @@ api.delete('/companyDelete/:id', [validateJwt], companyDelete)
 api.get('/viewAllCompany', [validateJwt], viewAllCompany)
 api.get('/viewCompany/:id', [validateJwt], viewCompany)
 api.get('/searchCompany', [validateJwt], searchCompany)
-api.get('/searchCompanyDate', [validateJwt], searchCompanyDate)
-api.get('/searchCompanyCategory/:id', [validateJwt], searchCompanyCategory)
+api.get('/searchCompany', [validateJwt], searchCompany)
+api.get('/excelCompany', [validateJwt], excelCompany)
 
 export default api
