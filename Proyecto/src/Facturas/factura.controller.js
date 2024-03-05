@@ -10,13 +10,20 @@ export const shoppingCart = async(req, res)=>{
     try{
         let { id } = req.params
         let { cantidad } = req.body
+        let regex = /^\d+$/
         let productEsxit = await Products.findOne({_id: id})
-        if(!productEsxit) return res.status(404).send({message: 'The product does not exist',err})
-        if(cantidad>productEsxit.stock) return res.status(400).send({message: 'There are not enough products',err})
-        let data = {stock: productEsxit.stock - cantidad}
+        if(!productEsxit) 
+            return res.status(404).send({message: 'The product does not exist'})
+        if(!regex.test(cantidad))
+            return res.status(400).send({message: 'Only numerical data in Cantidad'})
+        if(cantidad>productEsxit.stock) 
+            return res.status(400).send({message: 'There are not enough products'})
+
+        let stock = productEsxit.stock - cantidad
         let updatedProduct = await Products.findOneAndUpdate(
             {_id: id},
-            data,
+            {stock: stock,
+             venta: stock},
             {new: true}
         )
         if(!updatedProduct) return res.status(401).send({message: 'Product could not be added'})
@@ -46,8 +53,8 @@ export const addFactura = async(req,res)=>{
 
 export const viewFactura = async(req, res)=>{
     try{
-        let { name } = req.body
-        let factura = await Factura.findOne({name})
+        let { id } = req.body
+        let factura = await Factura.findOne({_id:id})
         if (factura){
             let loggedFactura = {
                 name: factura.name
