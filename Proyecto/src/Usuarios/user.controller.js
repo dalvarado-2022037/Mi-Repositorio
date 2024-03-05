@@ -53,7 +53,7 @@ export const login = async(req, res)=>{
                 {
                     username: username
                 },{
-                    
+                    gmail: gmail
                 }
             ]
         })
@@ -103,9 +103,6 @@ export const deleteUser = async(req, res)=>{
     try{
         let { id } = req.params
         let { uid, role } = req.user
-        console.log(id)
-        console.log(uid)
-        console.log(role)
         if (role == 'CLIENT') 
             if(id != uid) 
                 return res.status(403).send({message: 'You cannot alter this users information'})
@@ -115,5 +112,33 @@ export const deleteUser = async(req, res)=>{
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error deleting account'})
+    }
+}
+
+export const changeRol = async(req, res)=>{
+    try{
+        let { uid } = req.user
+        let { id } = req.params
+        let { role } = req.body
+        let userAdmin = await User.findOne({_id:uid})
+        let userChange = await User.findOne({_id:id})
+        if(userAdmin.role == 'CLIENT')
+            return res.status(403).send({message: 'You cannot alter this users information.'})
+
+        if(!userChange) 
+            return res.status(404).send({message: 'User not found'})
+
+        let updateUser = await User.findOneAndUpdate(
+            {_id: id},
+            {role: role},
+            {new: true}
+        )
+        if(!updateUser) 
+            return res.status(401).send({message: 'User not found and not updated'})
+        
+        return res.send({message: 'Updated user rol', updateUser})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error to the connected to "changeRol"'}) 
     }
 }

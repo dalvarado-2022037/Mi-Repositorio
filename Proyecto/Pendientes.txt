@@ -1,0 +1,3 @@
+Ya funciona todo el User
+Ya funciona todo la Category (Solo ver lo de eliminar)
+Ya funciona todo en Productos (Solo preguntarle al profe lo de buscar si esta bien)

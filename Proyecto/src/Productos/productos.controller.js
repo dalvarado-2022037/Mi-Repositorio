@@ -1,26 +1,24 @@
 'use strict'
 
-import Product from './productos.model.js'
+import Product from '../Productos/productos.model.js'
 import Categori from '../Categorias/categoria.model.js'
 
 export const testProducts = (req, res)=>{
     return res.send('Conectado a productos')
 }
-
-export const categoriDefault = async(req, res)=>{
-    try{
-        let categoriaDefault = await Categori.findOne({name: 'DEFAULT'})
-        req.categoriDefault.id = categoriaDefault.id 
-    }catch(err){
-        console.error(err);   
-    }
-}
-
 export const addProduct = async(req, res)=>{
     try{
-        categoriDefault()
         let data = req.body
-        if(!data.category) data.category = req.categoriDefault.id
+        let regex = /^-?\d+(\.\d+)?$/
+        let category = await Categori.findOne({_id:data.category})
+
+        if(!category) 
+            return res.status(404).send({message: 'Not exist category'})
+        if(!regex.test(data.price) || !regex.test(data.stock)) 
+            return res.status(402).send({message: 'Price or Stock only numerical data'})
+        if(!data.category) 
+            data.category = req.categoriDefault.id
+        
         let product = new Product(data)
         await product.save()
         return res.send({message: 'Product successfully added'})
