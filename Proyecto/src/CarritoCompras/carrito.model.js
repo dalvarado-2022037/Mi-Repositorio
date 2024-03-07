@@ -6,15 +6,17 @@ const carritoSchema = Schema({
         ref: 'user',
         required: true        
     },
-    products: [{
-        type: Schema.ObjectId,
-        ref: 'product',
-        required: true
-    }],
-    cantida: [{
-        type: Number,
-        required: true
+    data: [{
+        products: {
+            type: Schema.ObjectId,
+            ref: 'product',
+            required: true
+        },
+        cantida: {
+            type: Number,
+            required: true
+        }
     }]
 })
 
-export default model('factura', carritoSchema)
+export default model('shopintCart', carritoSchema)

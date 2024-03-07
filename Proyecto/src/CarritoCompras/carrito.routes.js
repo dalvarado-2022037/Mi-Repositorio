@@ -7,6 +7,6 @@ import { validateJwt } from '../middleware/validate-jwt.js'
 let api = Router()
 
 api.get('/test', test)
-api.post('/shoppingCart', [validateJwt], shoppingCart)
+api.post('/shoppingCart/:id', [validateJwt], shoppingCart)
 
 export default api
