@@ -1,6 +1,4 @@
-import Factura from './factura.model.js'
-import Products from '../Productos/productos.model.js'
-let productosLista = []
+//import Factura from './factura.model.js'
 
 export const testFactura = (req, res)=>{
     return res.send('Conectado a Factura')
@@ -8,26 +6,6 @@ export const testFactura = (req, res)=>{
 
 export const shoppingCart = async(req, res)=>{
     try{
-        let { id } = req.params
-        let { cantidad } = req.body
-        let regex = /^\d+$/
-        let productEsxit = await Products.findOne({_id: id})
-        if(!productEsxit) 
-            return res.status(404).send({message: 'The product does not exist'})
-        if(!regex.test(cantidad))
-            return res.status(400).send({message: 'Only numerical data in Cantidad'})
-        if(cantidad>productEsxit.stock) 
-            return res.status(400).send({message: 'There are not enough products'})
-
-        let stock = productEsxit.stock - cantidad
-        let updatedProduct = await Products.findOneAndUpdate(
-            {_id: id},
-            {stock: stock,
-             venta: stock},
-            {new: true}
-        )
-        if(!updatedProduct) return res.status(401).send({message: 'Product could not be added'})
-        productosLista.push(productEsxit)
         return res.send({message: 'Product added to shopping cart'})
     }catch(err){
         console.error(err)

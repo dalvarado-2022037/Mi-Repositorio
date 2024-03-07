@@ -5,7 +5,7 @@ import {
     shoppingCart,
     testFactura, 
     viewFactura 
-} from './factura.controller.js'
+} from '../Facturas/factura.controller.js'
 import { validateJwt, isAdmin } from '../middleware/validate-jwt.js'
 
 const api = Router()

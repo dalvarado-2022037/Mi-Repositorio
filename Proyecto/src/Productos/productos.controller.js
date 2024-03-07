@@ -9,7 +9,7 @@ export const testProducts = (req, res)=>{
 export const addProduct = async(req, res)=>{
     try{
         let data = req.body
-        let regex = /^-?\d+(\.\d+)?$/
+        let regex = /^\d+(\.\d+)?$/
         let category = await Categori.findOne({_id:data.category})
 
         if(!category) 
