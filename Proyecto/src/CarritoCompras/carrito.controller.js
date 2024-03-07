@@ -36,24 +36,19 @@ export const shoppingCart = async(req, res)=>{
             await newCart.save()
             return res.send({message: 'Producto add'})
         }else{
-            for (let i = 0; i < exist.data.length; i++) {
-                if(id==exist.data[i].products);{
-                    console.log('Zi');
-                    break
-                }
-            }
-            if(exist.data.incluides(id).products){
-                let lugar = exist.data.indexOf(id)
-                if(exist.data[lugar].cantidad+cantidad > productEsxit.stock){
-                    let posibleCompra = productEsxit.stock-exist.data[lugar].cantidad
-                    return res.send({message: `There arent that many products to buy ${posibleCompra}`})
-                }
-                exist.data[lugar].cantidad =  exist.data[lugar].cantidad + cantidad
-                await exist.save()
-            }else{
-                exist.data.push(id, cantidad)
+            let cantidadExistente = 0
+            let { data } = await Carrito.findOne({_id: exist.id, "data.products": id})
+            for (let i = 0; i < data.length; i++) 
+                if(data[i].products == id)
+                    cantidadExistente = data[i].cantida
+            if(parseInt(cantidad)+cantidadExistente>productEsxit.stock)
+                return res.status(400).send({message: ''})
+            let inc = await Carrito.findOneAndUpdate({_id: exist.id, "data.products": id}, {$inc: {"data.$.cantida": parseInt(cantidad)}})
+            if(!inc){
+                exist.data.push({products:productEsxit, cantida: cantidad})
                 await exist.save()
             }
+            return res.send({message: 'A'})
         }
     }catch(err){
         console.error(err)

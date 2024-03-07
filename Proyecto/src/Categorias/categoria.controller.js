@@ -70,11 +70,9 @@ export const daleteCategoria = async(req, res)=>{
         
         let idDefault = await Categoria.findOne({name:'DEFAULT'})
         let exist = await Product.find({category: id})
-        console.log(exist.length);
         if(exist.length == 0)
-            await Product.updateMany({category:id},{category:idDefault._id},{upsert:true})
-        console.log('llego');
-
+            await Product.updateMany({category:id},{category:idDefault.id})
+        console.log('Llego');
         return res.send({message: `The category: ${deleteCatego.name} has been successfully removed`})
     }catch(error){
         
