@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import { 
-    addFactura, 
+    buyOnlyProduct, 
     lookForAllFactura,
     testFactura, 
+    updateFacture, 
+    viewAllMyFactura, 
     viewFactura 
 } from '../Facturas/factura.controller.js'
 import { validateJwt, isAdmin } from '../middleware/validate-jwt.js'
@@ -13,11 +15,13 @@ const api = Router()
 api.get('/testFactura', testFactura)
 
 //Cualquiera logeado
-api.post('/viewFactura/:id', [validateJwt], viewFactura)
+api.get('/viewFactura/:id', [validateJwt], viewFactura)
+api.get('/viewAllMyFactura', [validateJwt], viewAllMyFactura)
+api.get('/buyOnlyProduct', [validateJwt], buyOnlyProduct)
 
 //Solo admin
-api.post('/addFactura', [validateJwt, isAdmin], addFactura)
 api.get('/lookForAllFactura', [validateJwt, isAdmin], lookForAllFactura)
+api.put('/updateFacture/:id', [validateJwt, isAdmin], updateFacture)
 
 
 export default api

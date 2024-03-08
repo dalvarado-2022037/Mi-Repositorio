@@ -101,10 +101,12 @@ export const updateUser = async(req, res)=>{
 export const deleteUser = async(req, res)=>{
     try{
         let { id } = req.params
-        let { uid, role } = req.user
+        let { uid, role, password } = req.user
+        let data = req.body
         if (role == 'CLIENT') 
-            if(id != uid) 
-                return res.status(403).send({message: 'You cannot alter this users information'})
+            if(id != uid)
+                if(checkPassword(data.password, password))
+                    return res.status(403).send({message: 'You cannot alter this users information'})
         let userDelete = await User.findOneAndDelete({_id: id})
         if(!userDelete) return res.status(404).send({message: 'Account not foud and not deleted'})
         return res.send({message: `Account with username ${userDelete.username} deleted successfully`})

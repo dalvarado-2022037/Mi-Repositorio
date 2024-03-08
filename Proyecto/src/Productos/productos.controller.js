@@ -24,7 +24,7 @@ export const addProduct = async(req, res)=>{
         return res.send({message: 'Product successfully added'})
     }catch(err){
         console.error(err)
-        return res.status(500).send({message: 'Error product could not be added',err})
+        return res.status(500).send({message: 'Error product could not be added | Respect all params'})
     }
 }
 
@@ -80,6 +80,31 @@ export const categoryProduct = async(req, res)=>{
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error when searching'})
+    }
+}
+
+export const bestSellingProduct = async(req, res)=>{
+    try{
+        let date = new Product()
+        let all = await Product.find({})
+        for (let i = 0; i < all.length; i++) {
+            if(date.venta <= all[i].venta)
+                date = all[i]
+        }
+        return res.send({message: 'The product best selling: ', date})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error when searching'}) 
+    }
+}
+
+export const bestSellingProducts = async(req, res)=>{
+    try{
+        let all = await Product.find({}).sort({venta: -1})
+        return res.send({message: 'The product best selling: ', all})
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error when searching'}) 
     }
 }
 

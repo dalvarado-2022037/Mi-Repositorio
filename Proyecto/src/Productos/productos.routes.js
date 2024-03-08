@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { 
     addProduct, 
+    bestSellingProduct, 
+    bestSellingProducts, 
     categoryProduct, 
     deleteProdu, 
     lookForAllProducts,
@@ -21,6 +23,8 @@ api.get('/lookForAllProducts', [validateJwt], lookForAllProducts)
 api.post('/viewProduct', [validateJwt], viewProduct)
 api.get('/productsNotExists', [validateJwt], productsNotExists)
 api.get('/categoryProduct/:id', [validateJwt], categoryProduct)
+api.get('/bestSellingProduct', [validateJwt], bestSellingProduct)
+api.get('/bestSellingProducts', [validateJwt], bestSellingProducts)
 
 //Solo admin
 api.post('/addProduct', [validateJwt, isAdmin], addProduct)

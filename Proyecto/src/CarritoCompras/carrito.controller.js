@@ -1,6 +1,5 @@
 import Carrito from './carrito.model.js'
 import Products from '../Productos/productos.model.js'
-import mongoose from 'mongoose'
 
 export const test = (req, res)=>{
     return res.send({message: 'Connected to Cart'})

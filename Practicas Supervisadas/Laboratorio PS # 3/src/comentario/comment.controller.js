@@ -168,7 +168,7 @@ export const lookAtPostsComment = async(req, res)=>{
     try{
         let { id } = req.params
         let comment = await Comment.find({publication: id}).populate('publication').populate('user')
-        let { userName } = await User.findOne({_id:comment[1].publication.user})
+        let { userName } = await User.findOne({_id:comment[0].publication.user})
 
         comment = comment.map(comment => {
             const likeCountComment = comment.like.length
