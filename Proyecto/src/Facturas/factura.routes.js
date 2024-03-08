@@ -21,7 +21,7 @@ api.get('/buyOnlyProduct', [validateJwt], buyOnlyProduct)
 
 //Solo admin
 api.get('/lookForAllFactura', [validateJwt, isAdmin], lookForAllFactura)
-api.put('/updateFacture/:id', [validateJwt, isAdmin], updateFacture)
+api.put('/updateFacture/:pid', [validateJwt, isAdmin], updateFacture)
 
 
 export default api

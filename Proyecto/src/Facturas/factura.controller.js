@@ -45,6 +45,11 @@ export const buyOnlyProduct = async(req, res)=>{
             await Productos.findOneAndUpdate({_id: infoProducts.products}, {
                 stock: (product.stock - infoProducts.cantida),
                 venta: (product.venta + infoProducts.cantida)})
+
+            return {
+                product: product.id,
+                cantidad: infoProducts.cantida
+            } 
         }))
         pdfDoc.text('\n')
         pdfDoc.text('\n')
@@ -58,7 +63,7 @@ export const buyOnlyProduct = async(req, res)=>{
         
         let data = {
             cliente: uid,
-            products: infoProducts,
+            data: info,
             subTotal: subtotal,
             total: total
         }
@@ -155,17 +160,18 @@ export const lookForAllFactura = async(req,res)=>{
 
 export const updateFacture = async(req, res)=>{
     try{
-        let { id } = req.params
+        let { pid } = req.params
         let { producto, cantida } = req.body
+        let continuar = true
         let subtotal = 0
         let total = 0
         
-        let factura = await Factura.findOne({_id: id})
+        let factura = await Factura.findOne({_id: pid})
         if(!factura)
             return res.status().send({message: 'Not found Bill'})
-        let infoProducts = factura.products
+        let infoProducts = factura.data
 
-        let { name } = await User.findOne({_id:factura.cliente})
+        let { name, id } = await User.findOne({_id:factura.cliente})
 
         let product = await Productos.findOne({_id: producto})
         if(!product)
@@ -180,18 +186,17 @@ export const updateFacture = async(req, res)=>{
         pdfDoc.text('\n')
     
         let info = await Promise.all(infoProducts.map(async(infoProducts) =>{
-            let product = await Productos.findOne({_id:infoProducts})
-            pdfDoc.text('The product ' + product.name, {width: 410, align: 'left'}, )
+            let product = await Productos.findOne({_id:infoProducts.product})
+            pdfDoc.text('The product ' + product.name + ` (${cantida}) `, {width: 410, align: 'left'}, )
             .text(product.price, {width: 410, align: 'right'})
 
             if(product.id == producto){
-                subtotal += parseFloat(product.price) * (parseFloat(infoProducts.cantida) - parseInt(cantida))
-                console.log(infoProducts.cantida)
-                console.log(cantida)
-                console.log(infoProducts.cantida-cantida);
+                if(cantida>infoProducts.cantidad)
+                    continuar = false
+                subtotal += parseFloat(product.price) * (parseFloat(infoProducts.cantidad) - parseInt(cantida))
                 await Productos.findOneAndUpdate({_id: infoProducts.products}, {
-                    stock: (product.stock - (infoProducts.cantida+cantida)),
-                    venta: (product.venta + (infoProducts.cantida-cantida))})
+                    stock: (product.stock - (infoProducts.cantidad+cantida)),
+                    venta: (product.venta + (infoProducts.cantidad-cantida))})
             }
             else{
                 subtotal += parseFloat(product.price) * (parseFloat(infoProducts.cantida))
@@ -199,28 +204,35 @@ export const updateFacture = async(req, res)=>{
                     stock: (product.stock - infoProducts.cantida),
                     venta: (product.venta + infoProducts.cantida)})
             }
+            return {
+                product: product,
+                cantidad: (parseInt(infoProducts.cantidad) - parseInt(cantida))
+            }
         }))
-        pdfDoc.text('\n')
-        pdfDoc.text('\n')
-        pdfDoc.fillColor('red').text('-----------------------------------------------------------------------------')
-        pdfDoc.fillColor('black')
-        pdfDoc.text('SubTotal ', {width: 410, align: 'left'}, ).text(subtotal, {width: 410, align: 'right'})
-        total = subtotal + (subtotal * 0.13)
-        pdfDoc.text('Total ', {width: 410, align: 'left'}, ).text(total, {width: 410, align: 'right'})
-        pdfDoc.text('\n')
-        pdfDoc.text('\n')
-        
-        let data = {
-            cliente: uid,
-            products: infoProducts,
-            subTotal: subtotal,
-            total: total
-        }
-        
-        let newFactura = await factura.findOneAndUpdate({_id:id},data, {new: true})        
-        pdfDoc.text(`invoice code: ${newFactura._id}`)
-
-        pdfDoc.end()
+        if(continuar){
+            pdfDoc.text('\n')
+            pdfDoc.text('\n')
+            pdfDoc.fillColor('red').text('-----------------------------------------------------------------------------')
+            pdfDoc.fillColor('black')
+            pdfDoc.text('SubTotal ', {width: 410, align: 'left'}, ).text(subtotal, {width: 410, align: 'right'})
+            total = subtotal + (subtotal * 0.13)
+            pdfDoc.text('Total ', {width: 410, align: 'left'}, ).text(total, {width: 410, align: 'right'})
+            pdfDoc.text('\n')
+            pdfDoc.text('\n')
+            
+            let data = {
+                cliente: id,
+                data: info,
+                subTotal: subtotal,
+                total: total
+            }
+            
+            let newFactura = await Factura.findOneAndUpdate({_id:pid},data, {new: true})        
+            pdfDoc.text(`invoice code: ${newFactura._id}`)
+    
+            pdfDoc.end()
+        }else
+            return res.status(403).send({message: 'You cannot return more products than those purchased.'})
         return res.send({message: 'Proceso todo'})
     }catch(err){        
         console.error(err)

@@ -6,10 +6,16 @@ const facturaSchema = Schema({
         ref: 'user',
         required: true        
     },
-    products: [{
-        type: Schema.ObjectId,
-        ref: 'product',
-        required: true
+    data: [{
+        product: {
+            type: Schema.ObjectId,
+            ref: 'product',
+            required: true
+        },
+        cantidad: {
+            type: Number,
+            required: true
+        }
     }],
     subTotal: {
         type: Number,

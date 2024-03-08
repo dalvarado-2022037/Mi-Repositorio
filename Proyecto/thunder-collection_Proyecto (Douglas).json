@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Proyecto (Douglas)",
-    "dateExported": "2024-03-08T09:12:44.484Z",
+    "dateExported": "2024-03-08T09:49:26.515Z",
     "version": "1.1",
     "folders": [
         {
@@ -692,11 +692,11 @@
             "colId": "9812c72e-85fe-46b5-adef-705a8515455c",
             "containerId": "094005bf-a28e-41d3-aedb-b9929accaa3a",
             "name": "updateFacture",
-            "url": "factura/updateFacture/65eac5507137140441ef072a",
+            "url": "factura/updateFacture/65eadea6dae4d58079f67428",
             "method": "PUT",
             "sortNum": 260000,
             "created": "2024-03-08T09:01:11.385Z",
-            "modified": "2024-03-08T09:02:59.226Z",
+            "modified": "2024-03-08T09:48:08.958Z",
             "headers": [
                 {
                     "name": "token",
@@ -710,7 +710,7 @@
                 "form": [
                     {
                         "name": "producto",
-                        "value": "65eabf70330d5eb5e1e1b91a"
+                        "value": "65eabcdd588389f4364b64ad"
                     },
                     {
                         "name": "cantida",
@@ -718,6 +718,7 @@
                     }
                 ]
             },
+            "reqType": "put",
             "tests": []
         }
     ],
