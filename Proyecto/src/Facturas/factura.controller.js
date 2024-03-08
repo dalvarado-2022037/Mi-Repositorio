@@ -1,16 +1,7 @@
-//import Factura from './factura.model.js'
+import Factura from './factura.model.js'
 
 export const testFactura = (req, res)=>{
     return res.send('Conectado a Factura')
-}
-
-export const shoppingCart = async(req, res)=>{
-    try{
-        return res.send({message: 'Product added to shopping cart'})
-    }catch(err){
-        console.error(err)
-        return res.status(500).send({message: 'Error when placing the shopping cart',err})
-    }
 }
 
 export const buyOnlyProduct = async(req, res)=>{

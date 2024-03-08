@@ -34,7 +34,7 @@ export const shoppingCart = async(req, res)=>{
             }
             let newCart = new Carrito(dataCart)
             await newCart.save()
-            return res.send({message: 'Producto add'})
+            return res.send({message: 'Producto add, current products:  ', newCart})
         }else{
             let cantidadExistente = 0
             let { data } = await Carrito.findOne({_id: exist.id, "data.products": id})
@@ -48,7 +48,7 @@ export const shoppingCart = async(req, res)=>{
                 exist.data.push({products:productEsxit, cantida: cantidad})
                 await exist.save()
             }
-            return res.send({message: 'A'})
+            return res.send({message: 'Producto add, current products: ', exist})
         }
     }catch(err){
         console.error(err)
