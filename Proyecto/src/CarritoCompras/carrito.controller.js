@@ -41,14 +41,28 @@ export const shoppingCart = async(req, res)=>{
                 if(data[i].products == id)
                     cantidadExistente = data[i].cantida
             if(parseInt(cantidad)+cantidadExistente>productEsxit.stock)
-                return res.status(400).send({message: ''})
+                return res.status(400).send({message: 'You cannot buy more than what exists'})
             let inc = await Carrito.findOneAndUpdate({_id: exist.id, "data.products": id}, {$inc: {"data.$.cantida": parseInt(cantidad)}})
             if(!inc){
                 exist.data.push({products:productEsxit, cantida: cantidad})
                 await exist.save()
+                return res.send({message: 'Producto add, current products: ', exist})
             }
-            return res.send({message: 'Producto add, current products: ', exist})
+            return res.send({message: 'Producto add, current products: ', inc})
         }
+    }catch(err){
+        console.error(err)
+        return res.status(500).send({message: 'Error to the connected to shoppingCart'}) 
+    }
+}
+
+export const deletedProduct = (req, res)=>{
+    try{
+        let { id } = req.params
+        let { producto, cantidad } = req.body
+        let { uid } = req.user
+
+        
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error to the connected to shoppingCart'}) 

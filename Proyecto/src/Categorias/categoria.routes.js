@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { 
     addCategoria, 
-    daleteCategoria, 
+    deleteCategoria, 
     lookForAllCategoria, 
     testCategoria, 
     updateCategoria 
@@ -19,7 +19,7 @@ api.get('/lookForAllCategoria', [validateJwt], lookForAllCategoria)
 //Solo Admin
 api.post('/addCategoria', [validateJwt, isAdmin], addCategoria)
 api.put('/updateCategoria/:id', [validateJwt, isAdmin], updateCategoria)
-api.delete('/daleteCategoria/:id', [validateJwt, isAdmin], daleteCategoria)
+api.delete('/daleteCategoria/:id', [validateJwt, isAdmin], deleteCategoria)
 
 
 export default api

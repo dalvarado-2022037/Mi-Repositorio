@@ -16,7 +16,9 @@ export const addProduct = async(req, res)=>{
             return res.status(404).send({message: 'Not exist category'})
         if(!regex.test(data.price) || !regex.test(data.stock)) 
             return res.status(402).send({message: 'Price or Stock only numerical data'})
-        if(!data.category) 
+
+        console.log(typeof data.category);
+        if(!data.category || data.category == null) 
             data.category = req.categoriDefault.id
         
         let product = new Product(data)
@@ -31,7 +33,7 @@ export const addProduct = async(req, res)=>{
 export const viewProduct = async(req, res)=>{
     try{
         let { name } = req.body
-        let product = await Product.findOne({name})
+        let product = await Product.findOne({name: new RegExp(name, 'i')})
         if (product){
             let loggedProduct = {
                 username: product.name,
@@ -100,7 +102,7 @@ export const bestSellingProduct = async(req, res)=>{
 
 export const bestSellingProducts = async(req, res)=>{
     try{
-        let all = await Product.find({}).sort({venta: -1})
+        let all = await Product.find({}).sort({venta: -1}).limit(5)
         return res.send({message: 'The product best selling: ', all})
     }catch(err){
         console.error(err)

@@ -22,7 +22,9 @@ export const adminDefault = async(req, res)=>{
             }
             let user = new User(data)
             await user.save()
+            console.log('User created')
         }
+        console.log('User default exist')
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error adding administrator'})

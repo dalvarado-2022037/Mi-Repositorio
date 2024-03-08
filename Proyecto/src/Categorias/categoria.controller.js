@@ -15,7 +15,9 @@ export const categoriaDefault = async(req, res)=>{
             }
             let categoria = new Categoria(data)
             await categoria.save()
+            console.log('Category default created')
         }
+        console.log('Category default exist');
     }catch(err){
         console.error(err)
         return res.status(500).send({message: 'Error category could not be added',err})
@@ -61,20 +63,20 @@ export const updateCategoria = async(req,res)=>{
     }
 }
 
-export const daleteCategoria = async(req, res)=>{
+export const deleteCategoria = async(req, res)=>{
     try{
         let { id } = req.params
-        let deleteCatego = await Categoria.findOneAndDelete({_id:id})
-        if(!deleteCatego) 
-            return res.status(404).send({message: 'The category could not be deleted'})
-        
+
         let idDefault = await Categoria.findOne({name:'DEFAULT'})
-        let exist = await Product.find({category: id})
-        if(exist.length == 0)
-            await Product.updateMany({category:id},{category:idDefault.id})
-        console.log('Llego');
+        await Product.updateMany({category: id}, {category: idDefault._id})
+
+        let deleteCatego = await Categoria.deleteOne({_id:id})
+        if(!deleteCatego)
+            return res.status(404).send({message: 'The category could not be deleted'})
+
         return res.send({message: `The category: ${deleteCatego.name} has been successfully removed`})
-    }catch(error){
-        
+    }catch(err){
+        console.error(err)
+        return res.status(404).send({message: 'Unexpected error while daleteCategoria'})
     }
 }
