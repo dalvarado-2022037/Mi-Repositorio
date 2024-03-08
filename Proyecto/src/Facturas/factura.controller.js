@@ -19,9 +19,7 @@ export const buyOnlyProduct = async(req, res)=>{
         let infoProducts = cart.data
         let subtotal = 0
         let total = 0
-        let now = Date.now
-        let date = new Date(now)
-        date = date("<YYYY-mm-ddTHH:MM:ss>")
+        let now = Date.now()
 
         //Creamos un documento PDF para realizar la fatura
         let pdfDoc = new PDFKitDocument()
@@ -30,9 +28,9 @@ export const buyOnlyProduct = async(req, res)=>{
         pdfDoc.pipe(fs.createWriteStream(`${name}.pdf`))
         pdfDoc.fontSize(30).moveDown().text('Factura', {width: 410, align: 'center'})
         pdfDoc.fontSize(16).moveDown()
-        pdfDoc.text(`The user ${name}`)
+        pdfDoc.text(`The user: ${name}`)
         pdfDoc.text('\n')
-        pdfDoc.text('Date: ' + date)
+        pdfDoc.text('Date: ' + now)
 
         //Realizamos un map con los datos para obtener el precio y la cantida
         //Como realizaremos una busqueda designamos que va a ser una promesa
@@ -43,7 +41,7 @@ export const buyOnlyProduct = async(req, res)=>{
             let product = await Productos.findOne({_id:infoProducts.products})
             //Ingresamos los datos
             pdfDoc.text('The product ' + product.name + ` (cant: ${infoProducts.cantida}) `, {width: 410, align: 'left'}, )
-            .text('Q.'+product.price, {width: 410, align: 'right'})
+            .text('Q.'+(product.price*infoProducts.cantida), {width: 410, align: 'right'})
             subtotal += parseFloat(product.price) * parseFloat(infoProducts.cantida)
 
             await Productos.findOneAndUpdate({_id: infoProducts.products}, {
